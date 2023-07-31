@@ -15,6 +15,7 @@ const c_beranda = require('./controller/c_beranda')
 
 //route
 app.get('/', c_beranda.index)
+app.get('/auth', c_beranda.login)
 
 
 //jalankan server
