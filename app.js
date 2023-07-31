@@ -5,6 +5,7 @@ const port      = 3000
 
 app.use( express.json() )
 app.use( express.urlencoded({extended: false}) )
+app.use( express.static('public') )
 
 app.set('views', './view')
 app.set('view engine', 'ejs')
