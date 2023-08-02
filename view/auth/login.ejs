@@ -8,7 +8,14 @@
             <main>
                 <form method="post" action="/auth/login">
                     <h1 class="h3 mb-3">Please sign in</h1>
-                    <hr><br>
+                    <hr>
+                    <% if (pesanError) { %>
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <strong><%= pesanError %></strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        <br>
+                    <% } %>
                     <div class="form-floating mb-3">
                         <input type="text" name="form_username" class="form-control" placeholder="Nama akun" required>
                         <label for="floatingInput">Username</label>

@@ -6,7 +6,6 @@ const cookieParser  = require('cookie-parser')
 const session       = require('express-session')
 
 
-
 app.use( express.json() )
 app.use( express.urlencoded({extended: false}) )
 app.use( express.static('public') )
@@ -21,6 +20,7 @@ const c_beranda = require('./controller/c_beranda')
 app.get('/', c_beranda.index)
 app.get('/auth', c_beranda.login)
 app.post('/auth/login', c_beranda.proses_login)
+app.get('/dashboard', c_beranda.sukses_login)
 
 
 //jalankan server
