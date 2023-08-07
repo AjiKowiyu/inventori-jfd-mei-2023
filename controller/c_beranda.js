@@ -8,6 +8,8 @@ const db        = mysql.createConnection({
 })
 db.connect()
 
+
+
 let cari_username = (username)=>{
     return new Promise((resolve, reject) => {
         try {
@@ -21,6 +23,8 @@ let cari_username = (username)=>{
         }
     })
 }
+
+
 
 let cek_username_password = (username, password)=>{
     return new Promise(async (resolve,reject)=>{
@@ -44,6 +48,8 @@ let cek_username_password = (username, password)=>{
     })
 }
 
+
+
 module.exports = {
 
     index: function(req,res) {
@@ -54,10 +60,14 @@ module.exports = {
     },
 
 
+    cari_username,
+    cek_username_password,
+
+
     login: function(req,res) {
         let data = {
             konten: 'auth/login',
-            pesanError: req.query.m
+            pesanError: req.query.m,
         }
         res.render('template', data)
     },
@@ -68,18 +78,40 @@ module.exports = {
         let password = req.body.form_password
 
         try {
-            await cek_username_password(username, password)
-            return res.redirect('/dashboard')
+            let akuncocok = await cek_username_password(username, password)
+            if (akuncocok) {
+                let user = await cari_username(username)
+                if (user) {
+                    req.session.user = user
+                    return res.redirect('/dashboard')
+                }
+            }
         } catch (error) {
             res.redirect(`/auth?m=${error}`)
         }
     },
 
 
+    cek_login: function (req,res,next) {
+        if (!req.session.user) {
+            console.log("User not found!")
+            return res.redirect(`/auth`)
+        } else {
+            console.log("signed in")
+            next()
+        }
+    },
+
+
 
     sukses_login: function(req,res) {
-        res.send('anda berhasil login')
-    }
+        res.send('anda berhasil login' + JSON.stringify(req.session))
+    },
+
+
+    akun: function(req,res) {
+        res.send('halaman akun '+ JSON.stringify(req.session))
+    },
 
 
 
