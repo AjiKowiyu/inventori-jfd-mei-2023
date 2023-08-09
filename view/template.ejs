@@ -14,7 +14,33 @@
         </style>
     </head>
     <body>
-        <%- include(konten) %>
+        <% if (req.session.user) { %>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-2 height-100 bg-dark text-light py-3">
+                        <ul class="list-group">
+                            <li class="list-group-item bg-transparent text-light border-0">
+                                <a href="/dashboard" class="text-decoration-none text-light">Dashboard</a>
+                            </li>
+                            <li class="list-group-item bg-transparent text-light border-0">
+                                <a href="/master/barang" class="text-decoration-none text-light">Master Barang</a>
+                            </li>
+                            <li class="list-group-item bg-transparent text-light border-0">
+                                <a href="#" class="text-decoration-none text-light">Stok Masuk</a>
+                            </li>
+                            <li class="list-group-item bg-transparent text-light border-0">
+                                <a href="#" class="text-decoration-none text-light">Stok Keluar</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-10 height-100 bg-light py-3">
+                        <%- include(konten) %>
+                    </div>
+                </div>
+            </div>
+        <% } else { %>
+            <%- include(konten) %>
+        <% } %>
         <script src="/bootstrap/js/bootstrap.bundle.js"></script>
     </body>
 </html>

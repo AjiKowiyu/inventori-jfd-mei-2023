@@ -55,6 +55,7 @@ module.exports = {
     index: function(req,res) {
         let data = {
             konten: 'beranda/index',
+            req: req,
         }
         res.render('template', data)
     },
@@ -68,6 +69,7 @@ module.exports = {
         let data = {
             konten: 'auth/login',
             pesanError: req.query.m,
+            req: req,
         }
         res.render('template', data)
     },
