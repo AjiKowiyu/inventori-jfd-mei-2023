@@ -38,6 +38,7 @@ app.set('view engine', 'ejs')
 //import file
 const cek_login = require('./controller/c_beranda').cek_login
 const c_beranda = require('./controller/c_beranda')
+const c_dashboard = require('./controller/c_dashboard')
 
 
 
@@ -45,8 +46,7 @@ const c_beranda = require('./controller/c_beranda')
 app.get('/', c_beranda.index)
 app.get('/auth', c_beranda.login)
 app.post('/auth/login', c_beranda.proses_login)
-app.get('/dashboard', cek_login, c_beranda.sukses_login)
-app.get('/akun', cek_login, c_beranda.akun)
+app.get('/dashboard', cek_login, c_dashboard.index)
 
 
 

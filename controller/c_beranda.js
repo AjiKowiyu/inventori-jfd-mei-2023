@@ -94,25 +94,11 @@ module.exports = {
 
     cek_login: function (req,res,next) {
         if (!req.session.user) {
-            console.log("User not found!")
             return res.redirect(`/auth`)
         } else {
-            console.log("signed in")
             next()
         }
     },
-
-
-
-    sukses_login: function(req,res) {
-        res.send('anda berhasil login' + JSON.stringify(req.session))
-    },
-
-
-    akun: function(req,res) {
-        res.send('halaman akun '+ JSON.stringify(req.session))
-    },
-
 
 
 
