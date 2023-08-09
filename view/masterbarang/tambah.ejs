@@ -1,0 +1,25 @@
+<h1>Form tambah barang</h1><hr>
+<div class="container">
+    <form action="/master/barang/proses-tambah" method="post">
+        <div class="row">
+            <div class="col-8">
+                <div class="form-group mb-4">
+                    <label>Kode barang:</label>
+                    <input type="text" name="form_kode_barang" class="form-control" required>
+                </div>
+                <div class="form-group mb-4">
+                    <label>Nama barang:</label>
+                    <input type="text" name="form_nama_barang" class="form-control" required>
+                </div>
+                <div class="form-group mb-4">
+                    <label>Deskripsi barang:</label>
+                    <input type="text" name="form_deskripsi_barang" class="form-control" required>
+                </div>
+            </div>
+            <div class="col-8 text-end">
+                <button type="submit" class="btn btn-success">Simpan</button>
+                <a href="/master/barang" class="btn btn-danger">Batal</a>
+            </div>
+        </div>
+    </form>
+</div>

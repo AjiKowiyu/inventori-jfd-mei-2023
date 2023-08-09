@@ -13,4 +13,13 @@ module.exports = {
     },
 
 
+    tambah: function(req,res) {
+        let data = {
+            konten: 'masterbarang/tambah',
+            req: req,
+        }
+        res.render('template', data)
+    },
+
+
 }
