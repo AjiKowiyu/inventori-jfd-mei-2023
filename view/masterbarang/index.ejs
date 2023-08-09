@@ -1,1 +1,26 @@
-<h1>ini adalah folder view/masterbarang/index.ejs</h1>
+
+<div class="container">
+    <h1>Database Barang</h1><hr>
+    <% if (barang.length < 1) { %>
+        <h3>belum ada barang</h3>
+    <% } else { %>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Kode</th>
+                    <th>Nama Barang</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% barang.forEach( (b)=>{ %>
+                    <tr>
+                        <td>1</td>
+                        <td><%= b.kode %></td>
+                        <td><%= b.nama %></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    <% } %>
+</div>
