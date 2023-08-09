@@ -39,6 +39,7 @@ app.set('view engine', 'ejs')
 const cek_login = require('./controller/c_beranda').cek_login
 const c_beranda = require('./controller/c_beranda')
 const c_dashboard = require('./controller/c_dashboard')
+const c_masterbarang = require('./controller/c_masterbarang')
 
 
 
@@ -47,6 +48,7 @@ app.get('/', c_beranda.index)
 app.get('/auth', c_beranda.login)
 app.post('/auth/login', c_beranda.proses_login)
 app.get('/dashboard', cek_login, c_dashboard.index)
+app.get('/master/barang', cek_login, c_masterbarang.index)
 
 
 
