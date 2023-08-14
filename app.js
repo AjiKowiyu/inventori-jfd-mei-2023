@@ -40,6 +40,7 @@ const cek_login = require('./controller/c_beranda').cek_login
 const c_beranda = require('./controller/c_beranda')
 const c_dashboard = require('./controller/c_dashboard')
 const c_masterbarang = require('./controller/c_masterbarang')
+const c_stok = require('./controller/c_stok')
 
 
 
@@ -48,9 +49,12 @@ app.get('/', c_beranda.index)
 app.get('/auth', c_beranda.login)
 app.post('/auth/login', c_beranda.proses_login)
 app.get('/dashboard', cek_login, c_dashboard.index)
+
 app.get('/master/barang', cek_login, c_masterbarang.index)
 app.get('/master/barang/tambah', cek_login, c_masterbarang.tambah)
 app.post('/master/barang/proses-tambah', cek_login, c_masterbarang.proses_tambah)
+
+app.get('/stok/masuk', cek_login, c_stok.masuk)
 
 
 
