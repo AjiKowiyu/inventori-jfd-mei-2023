@@ -1,11 +1,13 @@
+const m_masterbarang = require('../model/m_masterbarang')
 
 module.exports = {
 
 
-    masuk: function(req,res) {
+    masuk: async function(req,res) {
         let data = {
-            konten: 'stok/masuk',
-            req: req,
+            req     : req,
+            konten  : 'stok/masuk',
+            barang  : await m_masterbarang.get_all(),
         }
         res.render('template', data)
     },

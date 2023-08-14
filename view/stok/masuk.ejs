@@ -1,1 +1,37 @@
-ini berasal dari view/stok/masuk.ejs
+<h1>Form stok masuk</h1><hr>
+<div class="container">
+    <form action="/stok/masuk/proses-input" method="post">
+        <div class="row">
+            <div class="col-8">
+
+                <div class="row mb-3">
+                    <div class="col-2">
+                        <label class="col-form-label">Kode barang:</label>
+                    </div>
+                    <div class="col-10">
+                        <select name="form_kode_barang" class="form-select" required>
+                            <option value="" selected>-- pilih barang --</option>
+                            <% barang.forEach( (brg)=>{ %>
+                                <option value="<%= brg.kode %>"><%= brg.kode %>&nbsp;&nbsp; (<%= brg.nama %>)</option>
+                            <% }) %>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-2">
+                        <label class="col-form-label">Stok masuk:</label>
+                    </div>
+                    <div class="col-10">
+                        <input type="number" name="form_stock_in" class="form-control" required>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-8 text-end">
+                <button type="submit" class="btn btn-success">Masukkan ke stok</button>
+                <a href="/master/barang" class="btn btn-danger">Batal</a>
+            </div>
+        </div>
+    </form>
+</div>
