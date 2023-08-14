@@ -50,6 +50,7 @@ app.post('/auth/login', c_beranda.proses_login)
 app.get('/dashboard', cek_login, c_dashboard.index)
 app.get('/master/barang', cek_login, c_masterbarang.index)
 app.get('/master/barang/tambah', cek_login, c_masterbarang.tambah)
+app.post('/master/barang/proses-tambah', cek_login, c_masterbarang.proses_tambah)
 
 
 

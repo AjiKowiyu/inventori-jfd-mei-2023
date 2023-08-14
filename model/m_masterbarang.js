@@ -32,4 +32,18 @@ module.exports = {
     },
 
 
+    simpan: function(req) {
+        let dataForm = {
+            kode        : req.body.form_kode_barang,
+            nama        : req.body.form_nama_barang,
+            deskripsi   : req.body.form_deskripsi_barang,
+        }
+        let sql = mysql.format(
+            `INSERT INTO master_barang SET ?;`,
+            [dataForm]
+        )
+        return db_execution(sql)
+    },
+
+
 }

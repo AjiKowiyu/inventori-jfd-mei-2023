@@ -22,4 +22,16 @@ module.exports = {
     },
 
 
+    proses_tambah: async function(req,res) {
+        let sql = await m_masterbarang.simpan(req)
+        try {
+            if (sql.insertId) {
+                res.redirect('/master/barang?status=insert-success')
+            }
+        } catch (error) {
+            throw err
+        }
+    },
+
+
 }
