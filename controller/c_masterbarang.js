@@ -29,7 +29,7 @@ module.exports = {
                 res.redirect('/master/barang?status=insert-success')
             }
         } catch (error) {
-            throw err
+            throw error
         }
     },
 

@@ -53,7 +53,7 @@ module.exports = {
                     res.redirect(`/stok/masuk?msg=${pesanSukses}`)
                 }
             } catch (error) {
-                throw err
+                throw error
             }
         }
     }
