@@ -56,6 +56,15 @@ module.exports = {
                 throw error
             }
         }
+    },
+
+
+    keluar: function(req,res) {
+        let data = {
+            req     : req,
+            konten  : 'stok/keluar',
+        }
+        res.render('template', data)
     }
 
 
