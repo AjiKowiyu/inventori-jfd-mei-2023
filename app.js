@@ -55,9 +55,10 @@ app.get('/master/barang/tambah', cek_login, c_masterbarang.tambah)
 app.post('/master/barang/proses-tambah', cek_login, c_masterbarang.proses_tambah)
 
 app.get('/stok/masuk', cek_login, c_stok.masuk)
-app.post('/stok/masuk/proses-input', cek_login, c_stok.proses_input)
+app.post('/stok/masuk/proses-input', cek_login, c_stok.proses_input_masuk)
 
 app.get('/stok/keluar', cek_login, c_stok.keluar)
+app.post('/stok/keluar/proses-input', cek_login, c_stok.proses_input_keluar)
 
 
 
