@@ -59,13 +59,14 @@ module.exports = {
     },
 
 
-    keluar: function(req,res) {
+    keluar: async function(req,res) {
         let data = {
             req     : req,
             konten  : 'stok/keluar',
+            barang  : await m_masterbarang.get_all(),
         }
         res.render('template', data)
-    }
+    },
 
 
 }

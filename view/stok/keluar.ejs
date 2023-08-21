@@ -1,1 +1,44 @@
-<h1>ini dari view/stok/keluar.ejs</h1>
+<% if (req.query.msg) { %>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong><%= (req.query.msg).replaceAll('-', ' ') %> !!</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<% } %>
+
+<h1>Form stok keluar</h1><hr>
+<div class="container">
+    <form action="/stok/keluar/proses-input" method="post">
+        <div class="row">
+            <div class="col-8">
+
+                <div class="row mb-3">
+                    <div class="col-2">
+                        <label class="col-form-label">Kode barang:</label>
+                    </div>
+                    <div class="col-10">
+                        <select name="form_kode_barang" class="form-select" required>
+                            <option value="" selected>-- pilih barang --</option>
+                            <% barang.forEach( (brg)=>{ %>
+                                <option value="<%= brg.kode %>"><%= brg.kode %>&nbsp;&nbsp; (<%= brg.nama %>)</option>
+                            <% }) %>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-2">
+                        <label class="col-form-label">Stok keluar:</label>
+                    </div>
+                    <div class="col-10">
+                        <input type="number" name="form_stock_in" class="form-control" required>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-8 text-end">
+                <button type="submit" class="btn btn-success">Kirim</button>
+                <a href="/master/barang" class="btn btn-danger">Batal</a>
+            </div>
+        </div>
+    </form>
+</div>
