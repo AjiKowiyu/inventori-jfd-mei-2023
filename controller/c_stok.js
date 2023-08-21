@@ -89,7 +89,27 @@ module.exports = {
                 }
                 //jika stok yang ingin dikeluarkan tidak melebihi stok gudang
                 else {
+                    //update balance
+                    let balance = cekstok[0].stock_balance - form_stock_out
+                    
                     //proses input ke database
+                    let dataForm = {
+                        kode            : form_kode_barang,
+                        stock_in        : 0,
+                        stock_out       : form_stock_out,
+                        stock_balance   : balance,
+                        created_at      : null,
+                        created_by      : req.session.user.id
+                    }
+                    try {
+                        let sql = await m_stok.simpan_stokkeluar(dataForm)
+                        let pesanSukses = `berhasil-input-barang-keluar:-${form_kode_barang}-sejumlah:-${form_stock_out}pcs`
+                        if (sql.insertId) {
+                            res.redirect(`/stok/keluar?msg=${pesanSukses}`)
+                        }
+                    } catch (error) {
+                        throw error
+                    }
                 }
             }
             // ketika barangnya tidak ada di gudang

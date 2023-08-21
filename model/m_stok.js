@@ -42,6 +42,15 @@ module.exports = {
             [dataForm]
         )
         return db_execution(sql)
-    }
+    },
+
+
+    simpan_stokkeluar: function(dataForm) {
+        let sql = mysql.format(
+            `INSERT INTO stok_barang SET ?`,
+            [dataForm]
+        )
+        return db_execution(sql)
+    },
 
 }
