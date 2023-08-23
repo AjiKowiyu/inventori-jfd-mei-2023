@@ -1,8 +1,23 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.bootstrap5.min.css">
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.bootstrap5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.colVis.min.js"></script>
+
 <%- include('riwayat') %>
 
 <div class="row">
     <div class="col-12">
-        <table class="table table-hover">
+        <table id="tbl-laporan" class="table table-hover">
             <thead class="table-primary">
                 <tr>
                     <th scope="col">Kode Barang</th>
@@ -24,3 +39,35 @@
         </table>
     </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+        let namafile = 'Laporan Pergerakan Barang'
+        var table = $('#tbl-laporan').DataTable( {
+            lengthChange: false,
+            dom: 'Bfrtp',
+            buttons: [
+                {
+                    extend: 'print',
+                    title: namafile
+                },
+                {
+                    extend: 'copy',
+                    title: namafile
+                },
+                {
+                    extend: 'excel',
+                    title: namafile,
+                    filename: namafile
+                },
+                {
+                    extend: 'pdf',
+                    title: namafile,
+                    filename: namafile
+                }
+            ]
+        });
+        
+        table.buttons().container().appendTo( '#example_wrapper .col-md-6:eq(0)' )
+    });
+</script>
