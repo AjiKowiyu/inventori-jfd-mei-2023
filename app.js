@@ -62,6 +62,7 @@ app.get('/stok/keluar', cek_login, c_stok.keluar)
 app.post('/stok/keluar/proses-input', cek_login, c_stok.proses_input_keluar)
 
 app.get('/laporan/stok/riwayat', cek_login, c_laporan.stok_riwayat)
+app.get('/laporan/stok/riwayat/:kode_barang', cek_login, c_laporan.stok_riwayat_perbarang)
 
 
 //jalankan server

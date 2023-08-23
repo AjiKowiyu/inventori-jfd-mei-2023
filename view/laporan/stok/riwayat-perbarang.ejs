@@ -1,0 +1,26 @@
+<%- include('riwayat') %>
+
+<div class="row">
+    <div class="col-12">
+        <table class="table table-hover">
+            <thead class="table-primary">
+                <tr>
+                    <th scope="col">Kode Barang</th>
+                    <th scope="col">Masuk</th>
+                    <th scope="col">Keluar</th>
+                    <th scope="col">Sisa</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                <% barang.forEach( (brg)=>{ %>
+                <tr>
+                    <td><%= brg.kode %></td>
+                    <td><%= brg.stock_in %></td>
+                    <td><%= brg.stock_out %></td>
+                    <td><%= brg.stock_balance %></td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</div>
