@@ -36,11 +36,12 @@ app.set('view engine', 'ejs')
 
 
 //import file
-const cek_login = require('./controller/c_beranda').cek_login
-const c_beranda = require('./controller/c_beranda')
-const c_dashboard = require('./controller/c_dashboard')
-const c_masterbarang = require('./controller/c_masterbarang')
-const c_stok = require('./controller/c_stok')
+const cek_login         = require('./controller/c_beranda').cek_login
+const c_beranda         = require('./controller/c_beranda')
+const c_dashboard       = require('./controller/c_dashboard')
+const c_masterbarang    = require('./controller/c_masterbarang')
+const c_stok            = require('./controller/c_stok')
+const c_laporan         = require('./controller/c_laporan')
 
 
 
@@ -60,6 +61,7 @@ app.post('/stok/masuk/proses-input', cek_login, c_stok.proses_input_masuk)
 app.get('/stok/keluar', cek_login, c_stok.keluar)
 app.post('/stok/keluar/proses-input', cek_login, c_stok.proses_input_keluar)
 
+app.get('/laporan/stok/riwayat', cek_login, c_laporan.stok_riwayat)
 
 
 //jalankan server
